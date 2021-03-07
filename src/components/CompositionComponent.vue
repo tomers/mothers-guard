@@ -1,34 +1,28 @@
 <template>
-  <div>
-    <p>{{ title }}</p>
-    <ul>
-      <li v-for="todo in todos" :key="todo.id" @click="increment">
+  <q-list >
+    <q-item clickable v-for="todo in todos" :key="todo.id" tag="a" target="_blank" :href="todo.url">
+      <q-item-label>
         {{ todo.content }}
-      </li>
-    </ul>
-    <!--
-    <p>Count: {{ todoCount }} / {{ meta.totalCount }}</p>
-    <p>Active: {{ active ? 'yes' : 'no' }}</p>
-    <p>Clicks on todos: {{ clickCount }}</p>
-    -->
-  </div>
+      </q-item-label>
+    </q-item>
+  </q-list>
 </template>
 
 <script lang="ts">
 import {
-  defineComponent, PropType, computed, ref, toRef, Ref
+  defineComponent, PropType, computed, /* ref, */ toRef, Ref
 } from '@vue/composition-api'
 import { Todo, Meta } from './models'
 
-function useClickCount () {
-  const clickCount = ref(0)
-  function increment () {
-    clickCount.value += 1
-    return clickCount.value
-  }
+// function useClickCount () {
+//   const clickCount = ref(0)
+//   function increment () {
+//     clickCount.value += 1
+//     return clickCount.value
+//   }
 
-  return { clickCount, increment }
-}
+//   return { clickCount, increment }
+// }
 
 function useDisplayTodo (todos: Ref<Todo[]>) {
   const todoCount = computed(() => todos.value.length)
@@ -55,7 +49,7 @@ export default defineComponent({
     }
   },
   setup (props) {
-    return { ...useClickCount(), ...useDisplayTodo(toRef(props, 'todos')) }
+    return { /* ...useClickCount(), */ ...useDisplayTodo(toRef(props, 'todos')) }
   }
 })
 </script>
