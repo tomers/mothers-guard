@@ -1,5 +1,5 @@
 <template>
-  <q-layout view="lHh Lpr lFf">
+  <q-layout view="lHh Lpr lFf" dir="rtl">
     <q-header elevated>
       <q-toolbar>
         <q-btn
@@ -12,13 +12,14 @@
         />
 
         <q-toolbar-title>
-          Quasar App
+          משמר אמהות
         </q-toolbar-title>
 
-        <div>Quasar v{{ $q.version }}</div>
+        <!--<div>Quasar v{{ $q.version }}</div>-->
       </q-toolbar>
     </q-header>
 
+    <!--
     <q-drawer
       v-model="leftDrawerOpen"
       show-if-above
@@ -39,6 +40,7 @@
         />
       </q-list>
     </q-drawer>
+    -->
 
     <q-page-container>
       <router-view />
